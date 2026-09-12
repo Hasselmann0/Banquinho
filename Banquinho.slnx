@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Banquinho.Api/Banquinho.Api.csproj" />
+    <Project Path="src/Banquinho.Application/Banquinho.Application.csproj" />
+    <Project Path="src/Banquinho.Domain/Banquinho.Domain.csproj" />
+    <Project Path="src/Banquinho.Infra/Banquinho.Infra.csproj" />
+  </Folder>
+</Solution>
