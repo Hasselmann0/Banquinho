@@ -12,12 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\Banquinho.Application\Banquinho.Application.csproj" />
+    <ProjectReference Include="..\Banquinho.Infra\Banquinho.Infra.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Banquinho.Application\Banquinho.Application.csproj" />
-    <ProjectReference Include="..\Banquinho.Infra\Banquinho.Infra.csproj" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

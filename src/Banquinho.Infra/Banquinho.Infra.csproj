@@ -11,4 +11,8 @@
     <ProjectReference Include="..\Banquinho.Domain\Banquinho.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repository\" />
+  </ItemGroup>
+
 </Project>
