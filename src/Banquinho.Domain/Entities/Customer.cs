@@ -7,7 +7,7 @@ namespace Banquinho.Domain.Entities
 {
     public class Customer
     {
-        public Guid CustomerId { get; set; }
+        public Guid CustomerId { get; set; } = Guid.NewGuid();
 
         [Required(ErrorMessage = "O nome é obrigatório.")]
         [MinLength(3, ErrorMessage = "O nome deve ter no mínimo 3 caracteres.")]

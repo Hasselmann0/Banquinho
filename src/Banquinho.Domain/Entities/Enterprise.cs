@@ -6,7 +6,7 @@ namespace Banquinho.Domain.Entities
 {
     public class Enterprise
     {
-        public Guid EnterpriseId { get; set; }
+        public Guid EnterpriseId { get; set; } = Guid.NewGuid();
 
         public string Name { get; set; }
 
