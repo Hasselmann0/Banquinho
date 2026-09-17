@@ -1,4 +1,4 @@
-﻿using Banquinho.Domain.Entities;
+using Banquinho.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,10 +14,11 @@ namespace Banquinho.Infra.Data
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Enterprise> Enterprises { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(BanquinhoDbContext).Assembly);
+        }
 
 
     }

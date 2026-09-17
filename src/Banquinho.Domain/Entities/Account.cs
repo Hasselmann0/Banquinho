@@ -8,13 +8,11 @@ namespace Banquinho.Domain.Entities
     public class Account
     {
         public Guid AccountId { get; set; } = Guid.NewGuid();
-
         public Guid AccountNumber { get; set; } = Guid.NewGuid();
         public AccountType AccountType { get; set; }
         public decimal Balance { get; set; } = 0;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public bool Status { get; set; } = true;
-
 
 
         public Customer? Customer { get; set; }
