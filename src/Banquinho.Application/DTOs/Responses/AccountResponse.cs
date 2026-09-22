@@ -1,4 +1,5 @@
-﻿using System;
+using Banquinho.Domain.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,7 +9,7 @@ public record AccountResponse
 (
     Guid AccountId,
     Guid AccountNumber,
-    Enum AccountType,
+    AccountType AccountType,
     decimal Balance,
     bool Status,
     DateTime CreatedAt,

@@ -1,4 +1,9 @@
+using Banquinho.Application.Repository;
+using Banquinho.Application.Services;
+using Banquinho.Application.Validators;
 using Banquinho.Infra.Data;
+using Banquinho.Infra.Repository;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 
@@ -13,6 +18,10 @@ builder.Services.AddDbContext<BanquinhoDbContext>(options =>
 
 builder.Services.AddControllers();
 
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+
+builder.Services.AddValidatorsFromAssemblyContaining<CreateAccountRequestValidator>();
 
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
