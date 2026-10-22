@@ -11,7 +11,7 @@ public record AccountResponse
     Guid AccountNumber,
     AccountType AccountType,
     decimal Balance,
-    bool Status,
+    bool IsActive,
     DateTime CreatedAt,
     Guid? CustomerId,
     Guid? EnterpriseId

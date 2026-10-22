@@ -30,15 +30,16 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         builder.HasIndex(c => c.Email)
             .IsUnique();
 
-        builder.Ignore(c => c.Password);
-
         builder.Property(c => c.PasswordHash)
             .IsRequired()
             .HasMaxLength(255);
 
-        builder.Property(c => c.CNPJ)
-            .IsRequired(false)
-            .HasMaxLength(14);
+        builder.Property(c => c.IsActive)
+            .IsRequired()
+            .HasDefaultValue(true);
+
+        builder.Property(c => c.LastLoginAt)
+            .IsRequired(false);
 
         builder.Property(c => c.CreatedAt)
             .IsRequired();

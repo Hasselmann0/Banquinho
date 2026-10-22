@@ -28,7 +28,7 @@ public class AccountConfiguration : IEntityTypeConfiguration<Account>
             .HasPrecision(18, 2)
             .HasDefaultValue(0);
 
-        builder.Property(a => a.Status)
+        builder.Property(a => a.IsActive)
             .IsRequired()
             .HasDefaultValue(true);
 

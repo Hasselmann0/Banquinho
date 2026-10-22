@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,6 +9,5 @@ public record CreateCustomerRequest
     string FullName,
     string CPF,
     string Email,
-    string Password,
-    string? CNPJ = null
+    string Password
 );

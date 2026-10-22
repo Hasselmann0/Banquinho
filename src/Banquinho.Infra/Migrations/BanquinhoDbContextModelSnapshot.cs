@@ -51,7 +51,7 @@ namespace Banquinho.Infra.Migrations
                     b.Property<Guid?>("EnterpriseId")
                         .HasColumnType("uuid");
 
-                    b.Property<bool>("Status")
+                    b.Property<bool>("IsActive")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("boolean")
                         .HasDefaultValue(true);
@@ -74,10 +74,6 @@ namespace Banquinho.Infra.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("CNPJ")
-                        .HasMaxLength(14)
-                        .HasColumnType("character varying(14)");
-
                     b.Property<string>("CPF")
                         .IsRequired()
                         .HasMaxLength(11)
@@ -95,6 +91,14 @@ namespace Banquinho.Infra.Migrations
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("character varying(150)");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
+                    b.Property<DateTime?>("LastLoginAt")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
@@ -126,6 +130,14 @@ namespace Banquinho.Infra.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(true);
+
+                    b.Property<Guid>("LegalRepresentativeId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -135,6 +147,8 @@ namespace Banquinho.Infra.Migrations
 
                     b.HasIndex("CNPJ")
                         .IsUnique();
+
+                    b.HasIndex("LegalRepresentativeId");
 
                     b.ToTable("Enterprises", (string)null);
                 });
@@ -156,9 +170,22 @@ namespace Banquinho.Infra.Migrations
                     b.Navigation("Enterprise");
                 });
 
+            modelBuilder.Entity("Banquinho.Domain.Entities.Enterprise", b =>
+                {
+                    b.HasOne("Banquinho.Domain.Entities.Customer", "LegalRepresentative")
+                        .WithMany("RepresentedEnterprises")
+                        .HasForeignKey("LegalRepresentativeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("LegalRepresentative");
+                });
+
             modelBuilder.Entity("Banquinho.Domain.Entities.Customer", b =>
                 {
                     b.Navigation("Accounts");
+
+                    b.Navigation("RepresentedEnterprises");
                 });
 
             modelBuilder.Entity("Banquinho.Domain.Entities.Enterprise", b =>

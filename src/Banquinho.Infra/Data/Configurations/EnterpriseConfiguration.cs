@@ -23,8 +23,18 @@ public class EnterpriseConfiguration : IEntityTypeConfiguration<Enterprise>
         builder.HasIndex(e => e.CNPJ)
             .IsUnique();
 
+        builder.Property(e => e.IsActive)
+            .IsRequired()
+            .HasDefaultValue(true);
+
         builder.Property(e => e.CreatedAt)
             .IsRequired();
+
+        builder.HasOne(e => e.LegalRepresentative)
+            .WithMany(c => c.RepresentedEnterprises)
+            .HasForeignKey(e => e.LegalRepresentativeId)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasMany(e => e.Accounts)
             .WithOne(a => a.Enterprise)

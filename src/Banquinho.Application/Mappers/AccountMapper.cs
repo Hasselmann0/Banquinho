@@ -17,7 +17,7 @@ namespace Banquinho.Application.Mappers
                 EnterpriseId = request.EnterpriseId,
                 AccountType = request.AccountType,
                 Balance = request.InitialDeposit,
-                Status = true,
+                IsActive = true,
                 CreatedAt = DateTime.UtcNow
             };
         }
@@ -29,7 +29,7 @@ namespace Banquinho.Application.Mappers
                 account.AccountNumber,
                 account.AccountType,
                 account.Balance,
-                account.Status,
+                account.IsActive,
                 account.CreatedAt,
                 account.CustomerId,
                 account.EnterpriseId

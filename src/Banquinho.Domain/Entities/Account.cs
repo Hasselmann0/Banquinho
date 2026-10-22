@@ -1,4 +1,4 @@
-﻿using Banquinho.Domain.Enums;
+using Banquinho.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +12,7 @@ namespace Banquinho.Domain.Entities
         public AccountType AccountType { get; set; }
         public decimal Balance { get; set; } = 0;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public bool Status { get; set; } = true;
+        public bool IsActive { get; set; } = true;
 
 
         public Customer? Customer { get; set; }

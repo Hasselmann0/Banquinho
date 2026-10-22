@@ -1,4 +1,4 @@
-﻿using Banquinho.Application.DTOs.Requests;
+using Banquinho.Application.DTOs.Requests;
 using FluentValidation;
 using System.Text.RegularExpressions;
 
@@ -34,12 +34,6 @@ namespace Banquinho.Application.Validators
                 .Matches(@"[0-9]").WithMessage("A senha deve conter pelo menos um número.")
                 .Matches(@"[\!\@\#\$\%\^\&\*\(\)\_\+\-\=\[\]\{\}\;\:\,\.\<\>]")
                 .WithMessage("A senha deve conter pelo menos um caractere especial (!@#$%...).");
-
-            When(x => !string.IsNullOrWhiteSpace(x.CNPJ), () =>
-            {
-                RuleFor(x => x.CNPJ)
-                    .Matches(@"^\d{14}$").WithMessage("O CNPJ deve conter exatamente 14 números.");
-            });
         }
 
 
