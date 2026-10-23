@@ -1,3 +1,4 @@
+using Banquinho.Api.Middlewares;
 using Banquinho.Application.Repository;
 using Banquinho.Application.Services;
 using Banquinho.Application.Validators;
@@ -36,6 +37,8 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
