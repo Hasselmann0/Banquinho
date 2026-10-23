@@ -1,8 +1,7 @@
-﻿using Banquinho.Application.DTOs.Requests;
+using Banquinho.Application.DTOs.Requests;
 using Banquinho.Application.DTOs.Responses;
 using Banquinho.Application.Services;
 using Microsoft.AspNetCore.Mvc;
-using FluentValidation;
 
 namespace Banquinho.Api.Controllers
 {
@@ -22,24 +21,8 @@ namespace Banquinho.Api.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Create([FromBody] CreateAccountRequest request)
         {
-            try
-            {
-                var response = await _accountService.CreateAccountAsync(request);
-
-                
-                return CreatedAtAction(nameof(GetById), new { id = response.AccountId }, response);
-            }
-            catch (ValidationException ex)
-            {
-                
-                var errors = ex.Errors.Select(e => new
-                {
-                    Campo = e.PropertyName,
-                    Mensagem = e.ErrorMessage
-                });
-
-                return BadRequest(new { Titulo = "Erro de Validação", Erros = errors });
-            }
+            var response = await _accountService.CreateAccountAsync(request);
+            return CreatedAtAction(nameof(GetById), new { id = response.AccountId }, response);
         }
       
 
