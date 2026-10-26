@@ -100,6 +100,7 @@ Com a API rodando, abra o navegador em:
 - [x] Endpoints funcionais:
   - `POST /api/accounts` (Abertura de conta com retorno 201 Created e header Location).
   - `GET /api/accounts/{id}` (Consulta de conta por ID com 200 OK / 404 Not Found).
-- [ ] Próximos passos: Implementação de CQRS, Arquitetura Hexagonal, tratamento global de erros, cadastro de clientes e transações financeiras.
+- [x] Exceções de negócio (`NotFoundException`, `BusinessRuleException`) e `ExceptionHandlingMiddleware` com respostas RFC 7807 (ProblemDetails).
+- [ ] Próximos passos (veja o [ROADMAP.md](ROADMAP.md)): cadastro de clientes PF/PJ, autenticação JWT, transações financeiras, CQRS e Arquitetura Hexagonal.
 
 ---
